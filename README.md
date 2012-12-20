@@ -44,7 +44,8 @@ Example
 
 Here's a working, if trivial, example.
 
-```from AEModelWithHooks import AEModelWithHooks
+```python
+from AEModelWithHooks import AEModelWithHooks
 from google.appengine.ext import db
 
 class Person(AEModelWithHooks):
@@ -53,13 +54,13 @@ class Person(AEModelWithHooks):
   
   def validate(self):
     """Validate fields before creating the model."""
-
+    
     if not self.name:
       self.validation_error('name', 'Please enter your name.')
-
+      
   def before_create(self):
     """"Munge some fields before actually saving the record"""
-
+    
     if not self.nickname:
       self.nickname = self.name.split(' ')[0]
 ```
